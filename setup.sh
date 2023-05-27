@@ -1,8 +1,12 @@
 unset PATH
 
 for p in $baseInputs $buildInputs; do
-  export PATH=$p/bin${PATH:+:}$PATH
+    export PATH=$p/bin${PATH:+:}$PATH
 done
+
+if [ -d $p/lib/pkgconfig ]; then
+    export PKG_CONFIG_PATH="$p/lib/pkgconfig${PKG_CONFIG_PATH:+:}$PKG_CONFIG_PATH"
+fi
 
 function unpackPhase (){
     tar -xf $src
