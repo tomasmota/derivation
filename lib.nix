@@ -3,5 +3,5 @@ rec {
     let
       origRes = f origArgs;
     in
-      origRes // { override = newArgs : makeOverridable f (origArgs // newArgs); };
+      origRes // { override = newArgs : makeOverridable f (origArgs // newArgs); add2 = x: x + 2; };
 }
